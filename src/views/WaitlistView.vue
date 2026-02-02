@@ -9,15 +9,47 @@ const company = ref('')
 const submitted = ref(false)
 const submitting = ref(false)
 
-async function handleSubmit(e: Event) {
-  e.preventDefault()
-  if (submitting.value) return
-  submitting.value = true
-  // In production you would POST to your backend or a service like Formspree
-  await new Promise((r) => setTimeout(r, 600))
-  submitted.value = true
-  submitting.value = false
-}
+const handleSubmit = async () => {
+  submitting.value = true;
+  
+  try {
+    const FORM_ID = '9043621';
+    
+    // 2. Map the data to Kit's structure
+    // Kit uses 'first_name' for names and a 'fields' object for anything else
+    const payload = {
+      email_address: email.value,
+      first_name: fullName.value,
+      fields: {
+        company: company.value // IMPORTANT: 'company' must exist in Kit Settings -> Custom Fields
+      }
+    };
+
+    const response = await fetch(`/api-kit/forms/${FORM_ID}/subscriptions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      submitted.value = true;
+      // Clear fields
+      fullName.value = '';
+      email.value = '';
+      company.value = '';
+    } else {
+      alert("Registration failed. Please try again.");
+    }
+  } catch (error) {
+    console.error("Waitlist error:", error);
+    alert("Check your connection or CORS settings.");
+  } finally {
+    submitting.value = false;
+  }
+};
 
 function goBack() {
   router.push('/')
