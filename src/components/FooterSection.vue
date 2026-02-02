@@ -3,7 +3,7 @@ const currentYear = new Date().getFullYear();
 </script>
 
 <template>
-  <footer class="py-12 bg-dark-900 border-t border-gray-800">
+  <footer class="snap-section py-12 bg-dark-900 border-t border-gray-800">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <!-- Logo and tagline -->
@@ -24,7 +24,7 @@ const currentYear = new Date().getFullYear();
           <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">
             Terms
           </a>
-          <a href="mailto:hello@mount.dev" class="text-gray-400 hover:text-white transition-colors text-sm">
+          <a href="mailto:dory202gr@gmail.com" class="text-gray-400 hover:text-white transition-colors text-sm">
             Contact
           </a>
         </div>

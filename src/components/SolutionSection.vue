@@ -1,35 +1,35 @@
 <script setup lang="ts">
 interface Solution {
-  icon: string;
-  title: string;
-  description: string;
-  highlight: string;
+  icon: string
+  title: string
+  description: string
+  highlight: string
 }
 
 const solutions: Solution[] = [
   {
     icon: '⚡',
-    title: 'Automated Capture',
-    description: 'No more manual documentation. Mount silently captures every meaningful interaction with your development environment.',
+    title: 'Zero-Touch Ingestion',
+    description: 'Stop writing manual docs. Mount connects to your tools (Cursor, Slack, Jira, GitHub) and silently builds your knowledge base in the background without changing your workflow.',
     highlight: 'Zero effort'
   },
   {
     icon: '🧠',
-    title: 'Collective Intelligence',
-    description: 'Every CLI command, cloud configuration change, or debugging session becomes a searchable asset for your entire team.',
-    highlight: 'Shared knowledge'
+    title: 'Capture the "Why"',
+    description: "Don't just see the code—see the decision. Mount links the Slack debate and the Agent reasoning to the final PR, so you never lose the context behind a change.",
+    highlight: 'Context'
   },
   {
-    icon: '🚀',
-    title: 'Instant Context',
-    description: 'New hires get up to speed in days, not months. Anyone can find the "why" behind any system decision instantly.',
-    highlight: 'Days, not months'
+    icon: '🔍',
+    title: 'Instant Answers',
+    description: 'Stop asking "Who worked on this?" Users and Agents can query Mount to instantly find the reasoning behind code, the real-time status of tasks, or the right owner for a bug.',
+    highlight: 'Instant'
   }
-];
+]
 </script>
 
 <template>
-  <section id="solution" class="py-20 bg-gradient-to-b from-gray-50 to-white">
+  <section id="solution" class="snap-section min-h-screen py-20 bg-gradient-to-b from-gray-50 to-white flex flex-col justify-center">
     <div class="max-w-6xl mx-auto px-6">
       <!-- Section header -->
       <div class="text-center mb-16">
@@ -43,7 +43,7 @@ const solutions: Solution[] = [
           Mount transforms every developer interaction into collective intelligence, without changing how your team works.
         </p>
       </div>
-      
+
       <!-- Solutions grid -->
       <div class="grid md:grid-cols-3 gap-8">
         <div
@@ -57,10 +57,10 @@ const solutions: Solution[] = [
               {{ solution.highlight }}
             </span>
           </div>
-          
+
           <!-- Icon -->
           <div class="text-4xl mb-4 mt-2">{{ solution.icon }}</div>
-          
+
           <!-- Content -->
           <h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
             {{ solution.title }}
@@ -70,7 +70,7 @@ const solutions: Solution[] = [
           </p>
         </div>
       </div>
-      
+
       <!-- CTA Section -->
       <div id="early-access" class="mt-20 text-center p-12 bg-gradient-to-r from-primary-600 to-primary-700 rounded-3xl shadow-xl">
         <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
@@ -79,12 +79,12 @@ const solutions: Solution[] = [
         <p class="text-primary-100 mb-8 max-w-xl mx-auto">
           Join our early adopter program and be among the first to transform how your engineering team shares knowledge.
         </p>
-        <a href="mailto:hello@mount.dev" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-primary-600 bg-white rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg">
+        <router-link to="/waitlist" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-primary-600 bg-white rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg">
           Get Early Access
           <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
-        </a>
+        </router-link>
       </div>
     </div>
   </section>
