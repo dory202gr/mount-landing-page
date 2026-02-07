@@ -9,7 +9,9 @@ const company = ref('')
 const submitted = ref(false)
 const submitting = ref(false)
 
-const handleSubmit = async () => {
+const handleSubmit = async (e: Event) => {
+  e.preventDefault();
+  console.log('handleSubmit called');
   submitting.value = true;
   
   try {
@@ -25,7 +27,11 @@ const handleSubmit = async () => {
       }
     };
 
-    const response = await fetch(`/api-kit/forms/${FORM_ID}/subscriptions`, {
+    const API_URL = import.meta.env.DEV 
+    ? `/api-kit/forms/${FORM_ID}/subscriptions` 
+    : `https://app.kit.com/forms/${FORM_ID}/subscriptions`;
+
+    const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -85,7 +91,7 @@ function goBack() {
           </p>
         </div>
 
-        <form v-if="!submitted" @submit="handleSubmit" class="space-y-5">
+        <form v-if="!submitted" @submit.prevent="handleSubmit" class="space-y-5">
           <div>
             <label for="fullName" class="block text-sm font-medium text-gray-300 mb-2">
               Full name
